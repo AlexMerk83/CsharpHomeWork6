@@ -31,6 +31,14 @@ void Task41QuantityOfNaturalNumbers()
 {
     Console.Clear();
 
+    int numQuantity = ConsoleIOHandler.ReadInt("quantity of numbers to be entered");
+    int count = 0;
+
+    for (int i = 0; i < numQuantity; i++)
+        if (ConsoleIOHandler.ReadDouble($"number {i}") > 0)
+            count++;
+    
+    System.Console.WriteLine($"{count} out of {numQuantity} numbers {(count > 1 ? "are" : "is") } greater than zero.");
 }
 #endregion
 
@@ -41,7 +49,26 @@ void Task41QuantityOfNaturalNumbers()
 void Task43PointOfIntersection()
 {
     Console.Clear();
-    
+    System.Console.WriteLine("Enter parameters of two straight lines:");
+    System.Console.WriteLine("y = k1 * x + b1");
+    System.Console.WriteLine("y = k2 * x + b2");
+
+    int k1 = ConsoleIOHandler.ReadInt("k1");
+    int b1 = ConsoleIOHandler.ReadInt("b1");
+    int k2 = ConsoleIOHandler.ReadInt("k2");
+    int b2 = ConsoleIOHandler.ReadInt("b2");
+
+    if (k1 != k2)
+    {
+        double x = (double)(b2 - b1) / (k1 - k2);
+        double y = (double)(b2 * k1 - b1 * k2) / (k1 - k2);
+
+        System.Console.WriteLine($"The intersection of y = {k1}*x + {b1} and y = {k2}*x + {b2} is at ({x}, {y}).");
+    }
+    else if (b1 == b2)
+        System.Console.WriteLine($"The lines y = {k1}*x + {b1} and y = {k2}*x + {b2} are the same.");
+    else
+        System.Console.WriteLine($"The lines y = {k1}*x + {b1} and y = {k2}*x + {b2} are the parallel lines, they do not intersect.");
 }
 #endregion
 
